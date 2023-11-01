@@ -22,27 +22,27 @@ public class NewQuoteCreation extends BasePage {
     WebElement createNewQuote;
 
     @FindBy(xpath = "//div[text()='First Name']/../../../..//input")
-    WebElement firstName;
+    WebElement firstNameField;
 
     @FindBy(xpath = "//div[text()='Last Name']/../../../..//input")
-    WebElement lastName;
+    WebElement lastNameField;
 
     @FindBy(xpath = "//div[text()='Date of Birth']/../../../..//input")
-    WebElement dateOfBirth;
+    WebElement dateOfBirthField;
 
     @FindBy(xpath = "//div[text()='Email']/../../../..//input")
-    WebElement email;
+    WebElement emailField;
 
     @FindBy(xpath = "//div[text()='Phone']/../../../..//input")
-    WebElement phone;
+    WebElement phoneField;
     @FindBy(xpath = "//div[text()='Address Line 1']/../../../..//input")
-    WebElement address;
+    WebElement addressField;
 
     @FindBy(xpath = "//div[text()='ZIP Code']/../../../..//input")
-    WebElement zipCode;
+    WebElement zipCodeField;
 
     @FindBy(xpath = "//div[text()='City']/../../../..//input")
-    WebElement city;
+    WebElement cityField;
 
     @FindBy(xpath = "//span[text()='>>> Search']/../../..")
     WebElement search;
@@ -69,31 +69,31 @@ public class NewQuoteCreation extends BasePage {
     }
 
     public void enterFirstname(String firstName1) {
-        typeText(firstName, firstName1, "");
+        typeText(firstNameField, firstName1, "");
     }
 
     public void enterLastName(String lastName1) {
-        typeText(lastName, lastName1, "");
+        typeText(lastNameField, lastName1, "");
     }
 
     public void enterDateOfBirth(String dateOfBirth1) {
-        typeText(dateOfBirth, dateOfBirth1, "");
+        typeText(dateOfBirthField, dateOfBirth1, "");
     }
 
     public void enterEmail(String email1) {
-        typeText(email, email1, "");
+        typeText(emailField, email1, "");
     }
 
     public void enterPhone(String phone1) {
-        typeText(phone, phone1, "");
+        typeText(phoneField, phone1, "");
     }
 
     public void enterAddress(String address1) {
-        typeText(address, address1, "");
+        typeText(addressField, address1, "");
     }
 
     public void enterZipCode(String zipCode1) {
-        typeText(zipCode, zipCode1, "");
+        typeText(zipCodeField, zipCode1, "");
     }
 
     public void CreateNewCustomer() throws InterruptedException {
@@ -104,6 +104,18 @@ public class NewQuoteCreation extends BasePage {
         clickElement(createNewCustomer, "create new customer");
         clickElement(nextBtn, "");
         clickElement(skipBtn, "");
+    }
+
+    public void enterCustomerInformation(String firstName, String lastName, String DOB, String email, String phone, String address, String zip) throws InterruptedException {
+        createNewQuote();
+        enterFirstname(firstName);
+        enterLastName(lastName);
+        enterDateOfBirth(DOB);
+        enterEmail(email);
+        enterPhone(phone);
+        enterAddress(address);
+        enterZipCode(zip);
+        CreateNewCustomer();
     }
 
 

@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 @CucumberOptions(
         features = "src/test/java/features/SandboxPractice.feature",
         glue= "steps",
-        tags="@Test123"
+        tags="@Homeowner"
 )
 public class CucumberTestNgRunner extends AbstractTestNGCucumberTests {
 

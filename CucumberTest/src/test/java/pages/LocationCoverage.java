@@ -11,37 +11,37 @@ public class LocationCoverage extends BasePage{
     WebDriver driver;
 
     @FindBy(xpath = "//div[text()='Residence Type']/../../../..//input")
-    WebElement residenceType;
+    WebElement residenceTypeSelect;
 
     @FindBy(xpath = "//div[text()='All Perils Deductible']/../../../..//input")
-    WebElement allPerilsDeductible;
+    WebElement allPerilsDeductibleSelect;
 
     @FindBy(xpath = "//div[text()='Replacement Cost']/../../../..//input")
-    WebElement replacementCost;
+    WebElement replacementCostField;
 
     @FindBy(xpath = "//div[text()='Other Structures']/../../../..//input")
-    WebElement otherStructures;
+    WebElement otherStructuresField;
 
     @FindBy(xpath = "//div[text()='Year Built']/../../../..//input")
-    WebElement yearBuilt;
+    WebElement yearBuiltField;
 
     @FindBy(xpath = "//div[text()='Windstorm or Hail  Deductible']/../../../..//input")
-    WebElement windstormOrHailDeductible;
+    WebElement windstormOrHailDeductibleSelect;
 
     @FindBy(xpath = "//div[text()='Liability']/../../../..//input")
-    WebElement liability;
+    WebElement liabilitySelect;
 
     @FindBy(xpath = "//div[text()='Medical Payments']/../../../..//input")
-    WebElement medicalPayments;
+    WebElement medicalPaymentsSelect;
 
     @FindBy(xpath = "//a[text()='homeowners | location coverage']")
     WebElement locationCoverage;
 
     @FindBy(xpath = "//div[text()='Construction Type']/../../../..//input")
-    WebElement constructionType;
+    WebElement constructionTypeSelect;
 
     @FindBy(xpath = "//div[text()='Roof Type']/../../../..//input")
-    WebElement roofType;
+    WebElement roofTypeSelect;
 
     @FindBy(xpath = "//div[text()='Contents']/../../../..//input")
     WebElement contents;
@@ -63,12 +63,12 @@ public class LocationCoverage extends BasePage{
     }
 
     public void enterResidenceType(String residenceType1){
-        clickElement(residenceType,"");
+        clickElement(residenceTypeSelect,"");
         clickElement(driver.findElement(By.xpath("//li[text()='"+residenceType1+"']")), "");
     }
 
     public void enterReplacementCost(String value){
-        typeText(replacementCost,value,"");
+        typeText(replacementCostField,value,"");
     }
     public void enterContents(String value){
         typeText(contents,value,"");
@@ -79,39 +79,39 @@ public class LocationCoverage extends BasePage{
     }
 
     public void enterOtherStructures(String value){
-        typeText(otherStructures,value,"");
+        typeText(otherStructuresField,value,"");
     }
     public void enterYearBuilt(String value){
-        typeText(yearBuilt,value,"");
+        typeText(yearBuiltField,value,"");
     }
 
     public void enterAllPerilsDed(String value){
-        typeText(allPerilsDeductible, value, "");
+        typeText(allPerilsDeductibleSelect, value, "");
 //        clickElement(allPerilsDeductible,"");
 //        clickElement(driver.findElement(By.xpath("//li[text()='"+value+"']")), "");
     }
     public void enterWindstormOrHailDed(String value){
-        typeText(windstormOrHailDeductible, value, "");
+        typeText(windstormOrHailDeductibleSelect, value, "");
 //        clickElement(windstormOrHailDeductible,"");
 //        clickElement(driver.findElement(By.xpath("//li[text()='"+value+"']")), "");
     }
     public void enterLiability(String value){
-        typeText(liability, value, "");
+        typeText(liabilitySelect, value, "");
 //        clickElement(liability,"");
 //        clickElement(driver.findElement(By.xpath("//li[text()='"+value+"']")), "");
     }
 
     public void enterMedicalPayments(String value){
-        typeText(medicalPayments, value, "");
+        typeText(medicalPaymentsSelect, value, "");
 //        clickElement(medicalPayments,"");
 //        clickElement(driver.findElement(By.xpath("//li[text()='"+value+"']")), "");
     }
     public void enterConstructionType(String value){
-        clickElement(constructionType,"");
+        clickElement(constructionTypeSelect,"");
         clickElement(driver.findElement(By.xpath("//li[text()='"+value+"']")), "");
     }
     public void enterRoofType(String value){
-        clickElement(roofType,"");
+        clickElement(roofTypeSelect,"");
         clickElement(driver.findElement(By.xpath("//li[text()='"+value+"']")), "");
     }
 
@@ -123,4 +123,18 @@ public class LocationCoverage extends BasePage{
         clickElement(save, "");
     }
 
+    public void fillInLocationCoverage( String residenceType, String replacementCost, String allPerilsDed, String windstormOrHailDed, String liability, String medicalPayments, String yearBuilt, String roofType, String constructionType, String yesNo){
+        clickLocationCoverage();
+        enterResidenceType(residenceType);
+        enterReplacementCost(replacementCost);
+        enterAllPerilsDed(allPerilsDed);
+        enterWindstormOrHailDed(windstormOrHailDed);
+        enterLiability(liability);
+        enterMedicalPayments(medicalPayments);
+        enterYearBuilt(yearBuilt);
+        enterRoofType(roofType);
+        enterConstructionType(constructionType);
+        anyLossesOnTheLastThreeYears(yesNo);
+        saveChanges();
+    }
 }

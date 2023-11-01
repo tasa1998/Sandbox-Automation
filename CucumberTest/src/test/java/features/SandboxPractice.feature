@@ -5,7 +5,7 @@ Feature: Sandbox Example
     Given load data from excel
     Given user open sandbox
 
-  @Test123
+  @Homeowner @Smoke
   Scenario Outline: Sandbox Example
   Sandbox Example
     Then user logs in

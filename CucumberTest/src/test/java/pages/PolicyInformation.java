@@ -10,9 +10,9 @@ public class PolicyInformation extends BasePage {
     WebDriver driver;
 
     @FindBy(xpath = "//div[text()='Billing Method']/../../../..//input")
-    WebElement billingMethod;
+    WebElement billingMethodSelect;
     @FindBy(xpath = "//div[text()='Program Type']/../../../..//input")
-    WebElement programType;
+    WebElement programTypeSelect;
 
 
     public PolicyInformation(WebDriver driver) {
@@ -23,15 +23,15 @@ public class PolicyInformation extends BasePage {
 
     public void billingMethod(String method) {
 //        typeText(billingMethod, method, "");
-        clickElement(billingMethod, "");
+        clickElement(billingMethodSelect, "");
         clickElement(driver.findElement(By.xpath("//li[text()='" + method + "']")), "billing method");
     }
 
     public void programType(String type) throws InterruptedException {
 //        typeText(programType, type, "");
-        clickElement(programType, "");
+        clickElement(programTypeSelect, "");
         clickElement(driver.findElement(By.xpath("//li[text()='" + type + "']")), "program type");
-        clickElement(programType, "");
+        clickElement(programTypeSelect, "");
         clickElement(driver.findElement(By.xpath("//li[text()='" + type + "']")), "program type");
     }
 
@@ -53,6 +53,17 @@ public class PolicyInformation extends BasePage {
 
     public void areThereAnyAnimalsOrExoticPetsKeptOnThePremises(String yesNo) {
         clickElement(driver.findElement(By.xpath("//div[text()='Are there any animals or exotic pets kept on the premises?']/../../../..//label[text()='" + yesNo + "']")), "");
+    }
+
+    public void fillInPolicyInformation(String billingMethod, String programType, String runOutOfHome, String undergroundOil, String rented, String vacant, String animalsAndExoticPets) throws InterruptedException {
+        billingMethod(billingMethod);
+        programType(programType);
+        isChildOrDayCareRunOutOfTheHome(runOutOfHome);
+        anyUndergroundOilOrStorageTanks(undergroundOil);
+        isTheResidenceRentedMoreThan10Weeks(rented);
+        isTheResidenceVacant(vacant);
+        areThereAnyAnimalsOrExoticPetsKeptOnThePremises(animalsAndExoticPets);
+
     }
 
 }

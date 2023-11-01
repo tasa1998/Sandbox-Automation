@@ -51,5 +51,12 @@ public class EndOfQuoteCreation extends BasePage {
         clickElement(bind,"");
     }
 
+    public void bindQuote(String existingClient, String refusedToInsure, String nonRenewedOrDeclined) throws InterruptedException {
+        rateAndRequestIssue();
+        bindInformation(existingClient, refusedToInsure, nonRenewedOrDeclined);
+        rateAndRequestIssue();
+        clickNext();
+    }
+
 
 }

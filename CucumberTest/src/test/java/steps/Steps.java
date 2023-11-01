@@ -18,7 +18,7 @@ public class Steps extends BaseTest {
 
     Map<String, String> customerData = new HashMap<>();
     Map<String, String> homePageData = new HashMap<>();
-    Map<String,String> homeOwnersData = new HashMap<>();
+    Map<String, String> homeOwnersData = new HashMap<>();
 
     final String BROWSER = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("BROWSER");
     final String WAIT = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WAIT");
@@ -58,15 +58,7 @@ public class Steps extends BaseTest {
 
     @Then("user create new customer")
     public void userCreateNewCustomer() throws InterruptedException {
-        new NewQuoteCreation(driver).createNewQuote();
-        new NewQuoteCreation(driver).enterFirstname(customerData.get("FirstName"));
-        new NewQuoteCreation(driver).enterLastName(customerData.get("LastName"));
-        new NewQuoteCreation(driver).enterDateOfBirth(customerData.get("DOB"));
-        new NewQuoteCreation(driver).enterEmail(customerData.get("Email"));
-        new NewQuoteCreation(driver).enterPhone(customerData.get("Phone"));
-        new NewQuoteCreation(driver).enterAddress(customerData.get("Address Line 1"));
-        new NewQuoteCreation(driver).enterZipCode(customerData.get("ZIP Code"));
-        new NewQuoteCreation(driver).CreateNewCustomer();
+        new NewQuoteCreation(driver).enterCustomerInformation(customerData.get("FirstName"), customerData.get("LastName"), customerData.get("DOB"), customerData.get("Email"), customerData.get("Phone"), customerData.get("Address Line 1"), customerData.get("ZIP Code"));
     }
 
     @And("user register quote")
@@ -76,36 +68,17 @@ public class Steps extends BaseTest {
 
     @And("user fill in policy information")
     public void userFillInPolicyInformation() throws InterruptedException {
-        new PolicyInformation(driver).billingMethod(homeOwnersData.get("Billing Method"));
-        new PolicyInformation(driver).programType(homeOwnersData.get("Program Type"));
-        new PolicyInformation(driver).isChildOrDayCareRunOutOfTheHome(homeOwnersData.get("Is Child or Day Care run out of the home?"));
-        new PolicyInformation(driver).anyUndergroundOilOrStorageTanks(homeOwnersData.get("Any underground oil or storage tanks?"));
-        new PolicyInformation(driver).isTheResidenceRentedMoreThan10Weeks(homeOwnersData.get("Is the residence rented more than 10 weeks per year?"));
-        new PolicyInformation(driver).isTheResidenceVacant(homeOwnersData.get("Is the residence vacant?"));
-        new PolicyInformation(driver).areThereAnyAnimalsOrExoticPetsKeptOnThePremises(homeOwnersData.get("Are there any animals or exotic pets kept on the premises?"));
+        new PolicyInformation(driver).fillInPolicyInformation(homeOwnersData.get("Billing Method"), homeOwnersData.get("Program Type"), homeOwnersData.get("Is Child or Day Care run out of the home?"), homeOwnersData.get("Any underground oil or storage tanks?"), homeOwnersData.get("Is the residence rented more than 10 weeks per year?"), homeOwnersData.get("Is the residence vacant?"), homeOwnersData.get("Are there any animals or exotic pets kept on the premises?"));
     }
 
     @And("user fill in location coverage")
     public void userFillInLocationCoverage() {
-        new LocationCoverage(driver).clickLocationCoverage();
-        new LocationCoverage(driver).enterResidenceType(homeOwnersData.get("Residence Type"));
-        new LocationCoverage(driver).enterReplacementCost(homeOwnersData.get("Replacement Cost"));
-        new LocationCoverage(driver).enterAllPerilsDed(homeOwnersData.get("All Perils Deductible"));
-        new LocationCoverage(driver).enterWindstormOrHailDed(homeOwnersData.get("Windstorm or Hail Deductible"));
-        new LocationCoverage(driver).enterLiability(homeOwnersData.get("Liability"));
-        new LocationCoverage(driver).enterMedicalPayments(homeOwnersData.get("Medical Payments"));
-        new LocationCoverage(driver).enterYearBuilt(homeOwnersData.get("Year Built"));
-        new LocationCoverage(driver).enterRoofType(homeOwnersData.get("Roof Type"));
-        new LocationCoverage(driver).enterConstructionType(homeOwnersData.get("Construction Type"));
-        new LocationCoverage(driver).anyLossesOnTheLastThreeYears(homeOwnersData.get("Any losses in the last three years?"));
-        new LocationCoverage(driver).saveChanges();
+        new LocationCoverage(driver).fillInLocationCoverage(homeOwnersData.get("Residence Type"), homeOwnersData.get("Replacement Cost"), homeOwnersData.get("All Perils Deductible"), homeOwnersData.get("Windstorm or Hail Deductible"), homeOwnersData.get("Liability"), homeOwnersData.get("Medical Payments"), homeOwnersData.get("Year Built"), homeOwnersData.get("Roof Type"), homeOwnersData.get("Construction Type"), homeOwnersData.get("Any losses in the last three years?"));
+
     }
 
     @And("user binds quote")
     public void userBindsQuote() throws InterruptedException {
-        new EndOfQuoteCreation(driver).rateAndRequestIssue();
-        new EndOfQuoteCreation(driver).bindInformation(homeOwnersData.get("Existing Agency Client?"),homeOwnersData.get("Has any company cancelled or refused to insure in the past 3 years?"),homeOwnersData.get("Has coverage been non-renewed or Declined?"));
-        new EndOfQuoteCreation(driver).rateAndRequestIssue();
-        new EndOfQuoteCreation(driver).clickNext();
+        new EndOfQuoteCreation(driver).bindQuote(homeOwnersData.get("Existing Agency Client?"), homeOwnersData.get("Has any company cancelled or refused to insure in the past 3 years?"), homeOwnersData.get("Has coverage been non-renewed or Declined?"));
     }
 }
