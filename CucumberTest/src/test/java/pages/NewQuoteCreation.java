@@ -63,47 +63,47 @@ public class NewQuoteCreation extends BasePage {
     }
 
     public void createNewQuote() {
-        clickElement(newQuote, "");
-        clickElement(agent, "");
-        clickElement(createNewQuote, "");
+        clickElement(newQuote, "New Quote");
+        clickElement(agent, "Agency Name");
+        clickElement(createNewQuote, "Create Quote");
     }
 
     public void enterFirstname(String firstName1) {
-        typeText(firstNameField, firstName1, "");
+        typeText(firstNameField, firstName1, "First Name Field");
     }
 
     public void enterLastName(String lastName1) {
-        typeText(lastNameField, lastName1, "");
+        typeText(lastNameField, lastName1, "Last Name Field");
     }
 
     public void enterDateOfBirth(String dateOfBirth1) {
-        typeText(dateOfBirthField, dateOfBirth1, "");
+        typeText(dateOfBirthField, dateOfBirth1, "LoB Field");
     }
 
     public void enterEmail(String email1) {
-        typeText(emailField, email1, "");
+        typeText(emailField, email1, "Email Field");
     }
 
     public void enterPhone(String phone1) {
-        typeText(phoneField, phone1, "");
+        typeText(phoneField, phone1, "Phone Field");
     }
 
     public void enterAddress(String address1) {
-        typeText(addressField, address1, "");
+        typeText(addressField, address1, "Address Field");
     }
 
     public void enterZipCode(String zipCode1) {
-        typeText(zipCodeField, zipCode1, "");
+        typeText(zipCodeField, zipCode1, "Zip Code Field");
     }
 
     public void CreateNewCustomer() throws InterruptedException {
-        clickElement(search, "search");
+        clickElement(search, "Search");
         Thread.sleep(3000);
-        clickElement(createNewCustomer, "create new customer");
+        clickElement(createNewCustomer, "Create New Customer");
         Thread.sleep(3000);
-        clickElement(createNewCustomer, "create new customer");
-        clickElement(nextBtn, "");
-        clickElement(skipBtn, "");
+        clickElement(createNewCustomer, "Create New Customer");
+        clickElement(nextBtn, "Next Button");
+        clickElement(skipBtn, "Skip Button");
     }
 
     public void enterCustomerInformation(String firstName, String lastName, String DOB, String email, String phone, String address, String zip) throws InterruptedException {

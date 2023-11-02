@@ -51,7 +51,7 @@ public class Steps extends BaseTest {
 
     @Given("load data from excel")
     public void loadDataFromExcel() throws IOException {
-        customerData = new GetExcelData().getRowData("src/TestData/SandboxDataAutomatin_Practice.xlsx", "CustomerData", 0);
+        customerData = new GetExcelData().getRowData("src/TestData/SandboxDataAutomatin_Practice.xlsx", "CustomerData", 1);
         homeOwnersData = new GetExcelData().getRowData("src/TestData/SandboxDataAutomatin_Practice.xlsx", "Homeowners", 0);
         homePageData = new GetExcelData().getRowData("src/TestData/SandboxDataAutomatin_Practice.xlsx", "HomePage", 2);
     }

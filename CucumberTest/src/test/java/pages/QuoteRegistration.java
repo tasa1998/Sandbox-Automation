@@ -28,11 +28,11 @@ public class QuoteRegistration extends BasePage {
     }
 
     public void fillInQuoteRegistration(String producerName, String effDate1, String program1){
-        clickElement(producer,"");
-        clickElement(driver.findElement(By.xpath("//li[text()='"+producerName+"']")), "");
-        typeText(effDate,effDate1,"");
-        clickElement(program,"");
-        clickElement(driver.findElement(By.xpath("//li[text()='"+program1+"']")), "");
-        clickElement(nextBtn,"");
+        clickElement(producer,"Producer Dropdown");
+        clickElement(driver.findElement(By.xpath("//li[text()='"+producerName+"']")), "Producer Name");
+        typeText(effDate,effDate1,"Effective Date Field");
+        clickElement(program,"Program Dropdown");
+        clickElement(driver.findElement(By.xpath("//li[text()='"+program1+"']")), "Program Type");
+        clickElement(nextBtn,"Next Button");
     }
 }

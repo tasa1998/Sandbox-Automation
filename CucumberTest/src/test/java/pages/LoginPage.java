@@ -28,10 +28,10 @@ public class LoginPage extends BasePage{
     WebElement loginBtn;
 
     public void login(){
-        typeText(partnerNumber, "0", "");
-        typeText(username, "nastasjadamjanac", "");
-        typeText(password, "oneshield", "");
-        clickElement(loginBtn, "");
+        typeText(partnerNumber, "0", "Partner Number Field");
+        typeText(username, "nastasjadamjanac", "Username Field");
+        typeText(password, "oneshield", "Password Field");
+        clickElement(loginBtn, "Login Button");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='os-title-bar-greet']")).getText(),"Welcome");
     }
 }
