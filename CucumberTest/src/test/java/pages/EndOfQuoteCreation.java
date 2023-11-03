@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.IOException;
+
 public class EndOfQuoteCreation extends BasePage {
     WebDriver driver;
 
@@ -51,11 +53,13 @@ public class EndOfQuoteCreation extends BasePage {
         clickElement(bind,"");
     }
 
-    public void bindQuote(String existingClient, String refusedToInsure, String nonRenewedOrDeclined) throws InterruptedException {
+    public void bindQuote(String existingClient, String refusedToInsure, String nonRenewedOrDeclined) throws InterruptedException, IOException {
         rateAndRequestIssue();
         bindInformation(existingClient, refusedToInsure, nonRenewedOrDeclined);
         rateAndRequestIssue();
         clickNext();
+        Thread.sleep(3000);
+        reportScreenshot("src1","Testdesc");
     }
 
 

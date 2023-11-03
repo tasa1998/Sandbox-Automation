@@ -51,9 +51,9 @@ public class Steps extends BaseTest {
 
     @Given("load data from excel")
     public void loadDataFromExcel() throws IOException {
-        customerData = new GetExcelData().getRowData("src/TestData/SandboxDataAutomatin_Practice.xlsx", "CustomerData", 1);
-        homeOwnersData = new GetExcelData().getRowData("src/TestData/SandboxDataAutomatin_Practice.xlsx", "Homeowners", 0);
-        homePageData = new GetExcelData().getRowData("src/TestData/SandboxDataAutomatin_Practice.xlsx", "HomePage", 2);
+        customerData = new GetExcelData().getRowData("src/TestData/HomeownersTestData.xlsx", "CustomerData", 1);
+        homeOwnersData = new GetExcelData().getRowData("src/TestData/HomeownersTestData.xlsx", "Homeowners", 0);
+        homePageData = new GetExcelData().getRowData("src/TestData/HomeownersTestData.xlsx", "HomePage", 2);
     }
 
     @Then("user create new customer")
@@ -78,7 +78,8 @@ public class Steps extends BaseTest {
     }
 
     @And("user binds quote")
-    public void userBindsQuote() throws InterruptedException {
+    public void userBindsQuote() throws InterruptedException, IOException {
         new EndOfQuoteCreation(driver).bindQuote(homeOwnersData.get("Existing Agency Client?"), homeOwnersData.get("Has any company cancelled or refused to insure in the past 3 years?"), homeOwnersData.get("Has coverage been non-renewed or Declined?"));
+
     }
 }

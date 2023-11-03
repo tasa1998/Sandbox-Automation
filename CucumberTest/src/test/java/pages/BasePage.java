@@ -1,13 +1,20 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import io.qameta.allure.Allure;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.filefilter.FileFileFilter;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class BasePage {
 
@@ -66,4 +73,16 @@ public class BasePage {
     public boolean isElementPresent(By by) {
         return driver.findElements(by).size() > 0;
     }
+
+     public void takeScreenshot (String fileName) throws IOException {
+         File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+         FileUtils.copyFile(file, new File("results/screenshots/"+fileName+".png"));
+     }
+     public void reportScreenshot(String fileName, String desc) throws IOException {
+        takeScreenshot(fileName);
+        Path path = Paths.get("results/screenshots/"+fileName+".png");
+         InputStream is = Files.newInputStream(path);
+         Allure.addAttachment(desc, is);
+     }
+
 }
