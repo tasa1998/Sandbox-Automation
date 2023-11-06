@@ -30,7 +30,6 @@ public class Steps extends BaseTest {
     }
 
     @After
-
     public void afterScenario(Scenario scenario) {
         if (scenario.isFailed()) {
             String fileName = scenario.getName() + "_" + System.currentTimeMillis();
@@ -38,16 +37,12 @@ public class Steps extends BaseTest {
 
             try {
                 reportScreenshot(fileName, desc);
+                basequit();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
-
-    public void after() {
-        basequit();
-    }
-
 
 
     @Given("user open sandbox")
@@ -66,11 +61,11 @@ public class Steps extends BaseTest {
         new LoginPage(driver).login();
     }
 
-    @Given("load data from excel")
-    public void loadDataFromExcel() throws IOException {
-        customerData = new GetExcelData().getRowData("src/TestData/HomeownersTestData.xlsx", "CustomerData", 1);
-        homeOwnersData = new GetExcelData().getRowData("src/TestData/HomeownersTestData.xlsx", "Homeowners", 2);
-        homePageData = new GetExcelData().getRowData("src/TestData/HomeownersTestData.xlsx", "HomePage", 2);
+    @Given("load data from excel file {string}, {string},{string},{string}")
+    public void loadDataFromExcelFile(String arg0, String arg1, String arg2, String arg3) throws IOException {
+        customerData = new GetExcelData().getRowData(arg0, "CustomerData", Integer.parseInt(arg2));
+        homeOwnersData = new GetExcelData().getRowData(arg0, "Homeowners", Integer.parseInt(arg1));
+        homePageData = new GetExcelData().getRowData(arg0, "HomePage", Integer.parseInt(arg3));
     }
 
     @Then("user create new customer")
@@ -90,15 +85,19 @@ public class Steps extends BaseTest {
 
     @And("user fill in location coverage")
     public void userFillInLocationCoverage() {
-        if(homeOwnersData.get("Residence Type").equals("Tenants")){
-            new LocationCoverage(driver).fillInLocationCoveragetenant(homeOwnersData.get("Residence Type"), homeOwnersData.get("Contents"), homeOwnersData.get("Loss of Use"), homeOwnersData.get("Policy Coverage Option"), homeOwnersData.get("All Perils Deductible"), homeOwnersData.get("Windstorm or Hail Deductible"), homeOwnersData.get("Liability"), homeOwnersData.get("Medical Payments"), homeOwnersData.get("Year Built"), homeOwnersData.get("Roof Type"), homeOwnersData.get("Construction Type"), homeOwnersData.get("Any losses in the last three years?"), homeOwnersData.get("# of Floors"));
-        } else{
-        new LocationCoverage(driver).fillInLocationCoverage(homeOwnersData.get("Residence Type"), homeOwnersData.get("Replacement Cost"), homeOwnersData.get("Policy Coverage Option"), homeOwnersData.get("All Perils Deductible"), homeOwnersData.get("Windstorm or Hail Deductible"), homeOwnersData.get("Liability"), homeOwnersData.get("Medical Payments"), homeOwnersData.get("Year Built"), homeOwnersData.get("Roof Type"), homeOwnersData.get("Construction Type"), homeOwnersData.get("Any losses in the last three years?"), homeOwnersData.get("# of Floors"));
-    }}
+        if (homeOwnersData.get("Residence Type").equals("Tenants")) {
+            new LocationCoverage(driver).fillInLocationCoverageTenant(homeOwnersData.get("Residence Type"), homeOwnersData.get("Contents"), homeOwnersData.get("Loss of Use"), homeOwnersData.get("Policy Coverage Option"), homeOwnersData.get("All Perils Deductible"), homeOwnersData.get("Windstorm or Hail Deductible"), homeOwnersData.get("Liability"), homeOwnersData.get("Medical Payments"), homeOwnersData.get("Year Built"), homeOwnersData.get("Roof Type"), homeOwnersData.get("Construction Type"), homeOwnersData.get("Any losses in the last three years?"), homeOwnersData.get("# of Floors"));
+        } else {
+            new LocationCoverage(driver).fillInLocationCoverage(homeOwnersData.get("Residence Type"), homeOwnersData.get("Replacement Cost"), homeOwnersData.get("Policy Coverage Option"), homeOwnersData.get("All Perils Deductible"), homeOwnersData.get("Windstorm or Hail Deductible"), homeOwnersData.get("Liability"), homeOwnersData.get("Medical Payments"), homeOwnersData.get("Year Built"), homeOwnersData.get("Roof Type"), homeOwnersData.get("Construction Type"), homeOwnersData.get("Any losses in the last three years?"), homeOwnersData.get("# of Floors"));
+        }
+    }
 
     @And("user binds quote")
     public void userBindsQuote() throws InterruptedException, IOException {
         new EndOfQuoteCreation(driver).bindQuote(homeOwnersData.get("Existing Agency Client?"), homeOwnersData.get("Has any company cancelled or refused to insure in the past 3 years?"), homeOwnersData.get("Has coverage been non-renewed or Declined?"));
 
     }
+
+
+
 }

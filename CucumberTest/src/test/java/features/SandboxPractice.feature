@@ -2,12 +2,29 @@ Feature: Sandbox Example
   Sandbox Example
 
   Background:
-    Given load data from excel
     Given user open sandbox
 
   @Homeowner @Smoke
-  Scenario Outline: Sandbox Example
-  Sandbox Example
+  Scenario Outline: Smoke test example
+  Smoke test example
+    Given load data from excel file "<File Name>", "<Row Num Homeowners>","<Row Num Customer>","<Row Num Home Page>"
+    Then user logs in
+    And user create new customer
+    And user register quote
+    And user fill in policy information
+    And user fill in location coverage
+    And user binds quote
+
+
+    Examples:
+      | File Name                            | Row Num Homeowners | Row Num Customer | Row Num Home Page |
+      | src/TestData/HomeownersTestData.xlsx | 0                  | 1                | 2                 |
+      | src/TestData/HomeownersTestData.xlsx | 2                  | 1                | 2                 |
+
+
+  @Homeowner @Regression
+  Scenario Outline: Regression test example
+  Regression test Example
     Then user logs in
     And user create new customer
     And user register quote

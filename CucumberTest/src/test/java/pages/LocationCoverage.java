@@ -147,7 +147,7 @@ public class LocationCoverage extends BasePage{
         anyLossesOnTheLastThreeYears(yesNo);
         saveChanges();
     }
-    public void fillInLocationCoveragetenant( String residenceType, String contents, String lossOfUse, String coverageOptions, String allPerilsDed, String windstormOrHailDed, String liability, String medicalPayments, String yearBuilt, String roofType, String constructionType, String yesNo, String number){
+    public void fillInLocationCoverageTenant( String residenceType, String contents, String lossOfUse, String coverageOptions, String allPerilsDed, String windstormOrHailDed, String liability, String medicalPayments, String yearBuilt, String roofType, String constructionType, String yesNo, String number){
         clickLocationCoverage();
         enterResidenceType(residenceType, number, coverageOptions);
         enterContents(contents);
