@@ -69,7 +69,7 @@ public class Steps extends BaseTest {
     @Given("load data from excel")
     public void loadDataFromExcel() throws IOException {
         customerData = new GetExcelData().getRowData("src/TestData/HomeownersTestData.xlsx", "CustomerData", 1);
-        homeOwnersData = new GetExcelData().getRowData("src/TestData/HomeownersTestData.xlsx", "Homeowners", 0);
+        homeOwnersData = new GetExcelData().getRowData("src/TestData/HomeownersTestData.xlsx", "Homeowners", 2);
         homePageData = new GetExcelData().getRowData("src/TestData/HomeownersTestData.xlsx", "HomePage", 2);
     }
 
@@ -90,9 +90,11 @@ public class Steps extends BaseTest {
 
     @And("user fill in location coverage")
     public void userFillInLocationCoverage() {
-        new LocationCoverage(driver).fillInLocationCoverage(homeOwnersData.get("Residence Type"), homeOwnersData.get("Replacement Cost"), homeOwnersData.get("All Perils Deductible"), homeOwnersData.get("Windstorm or Hail Deductible"), homeOwnersData.get("Liability"), homeOwnersData.get("Medical Payments"), homeOwnersData.get("Year Built"), homeOwnersData.get("Roof Type"), homeOwnersData.get("Construction Type"), homeOwnersData.get("Any losses in the last three years?"));
-
-    }
+        if(homeOwnersData.get("Residence Type").equals("Tenants")){
+            new LocationCoverage(driver).fillInLocationCoveragetenant(homeOwnersData.get("Residence Type"), homeOwnersData.get("Contents"), homeOwnersData.get("Loss of Use"), homeOwnersData.get("Policy Coverage Option"), homeOwnersData.get("All Perils Deductible"), homeOwnersData.get("Windstorm or Hail Deductible"), homeOwnersData.get("Liability"), homeOwnersData.get("Medical Payments"), homeOwnersData.get("Year Built"), homeOwnersData.get("Roof Type"), homeOwnersData.get("Construction Type"), homeOwnersData.get("Any losses in the last three years?"), homeOwnersData.get("# of Floors"));
+        } else{
+        new LocationCoverage(driver).fillInLocationCoverage(homeOwnersData.get("Residence Type"), homeOwnersData.get("Replacement Cost"), homeOwnersData.get("Policy Coverage Option"), homeOwnersData.get("All Perils Deductible"), homeOwnersData.get("Windstorm or Hail Deductible"), homeOwnersData.get("Liability"), homeOwnersData.get("Medical Payments"), homeOwnersData.get("Year Built"), homeOwnersData.get("Roof Type"), homeOwnersData.get("Construction Type"), homeOwnersData.get("Any losses in the last three years?"), homeOwnersData.get("# of Floors"));
+    }}
 
     @And("user binds quote")
     public void userBindsQuote() throws InterruptedException, IOException {
