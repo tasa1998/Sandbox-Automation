@@ -21,6 +21,7 @@ public class BasePage {
     WebDriver driver;
     int waitTime = 30;
 
+
     public BasePage(WebDriver driver) {
         this.driver = driver;
     }

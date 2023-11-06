@@ -3,6 +3,7 @@ package steps;
 import excel_core.GetExcelData;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -29,9 +30,25 @@ public class Steps extends BaseTest {
     }
 
     @After
+
+    public void afterScenario(Scenario scenario) {
+        if (scenario.isFailed()) {
+            String fileName = scenario.getName() + "_" + System.currentTimeMillis();
+            String desc = "Screenshot when scenario failed: " + scenario.getName();
+
+            try {
+                reportScreenshot(fileName, desc);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public void after() {
         basequit();
     }
+
+
 
     @Given("user open sandbox")
     public void userOpenSandbox() {
