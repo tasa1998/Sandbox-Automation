@@ -1,5 +1,5 @@
-Feature: Sandbox Example
-  Sandbox Example
+Feature: Homeowners Example
+  Homeowners Example
 
   Background:
     Given user open sandbox
