@@ -10,6 +10,9 @@ import io.cucumber.java.en.Then;
 import org.openqa.selenium.By;
 import org.testng.Reporter;
 import pages.*;
+import pages.HomePages.EndOfQuoteCreation;
+import pages.HomePages.LocationCoverage;
+import pages.HomePages.PolicyInformation;
 
 import java.io.IOException;
 import java.util.HashMap;

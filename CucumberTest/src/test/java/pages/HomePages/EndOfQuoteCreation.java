@@ -1,10 +1,11 @@
-package pages;
+package pages.HomePages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import pages.BasePage;
 
 import java.io.IOException;
 
@@ -69,7 +70,7 @@ public class EndOfQuoteCreation extends BasePage {
         bindInformation(existingClient, refusedToInsure, nonRenewedOrDeclined);
         rateAndRequestIssue();
         clickNext();
-        Thread.sleep(3000);
+        Thread.sleep(5000);
         reportScreenshot("src1","Testdesc");
     }
 
