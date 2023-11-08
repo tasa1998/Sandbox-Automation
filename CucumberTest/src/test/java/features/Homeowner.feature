@@ -23,16 +23,17 @@ Feature: Homeowners Example
 
 
   @Homeowner @Regression
-  Scenario Outline: Regression test example
+  Scenario Outline: Regression test example Homeowners <Row Num Homeowners>
   Regression test Example
+    Given load data from excel file "<File Name>", "<Row Num Homeowners>","<Row Num Customer>","<Row Num Home Page>"
     Then user logs in
     And user create new customer
     And user register quote
     And user fill in policy information
-    And user fill in location coverage
+    And user fill in wind mitigation
     And user binds quote
 
 
     Examples:
-      | number | username         | password  |
-      | 0      | nastasjadamjanac | oneshield |
+      | File Name                            | Row Num Homeowners | Row Num Customer | Row Num Home Page |
+      | src/TestData/HomeownersTestData.xlsx | 4                  | 1                | 2                 |

@@ -59,6 +59,29 @@ public class LocationCoverage extends BasePage {
     @FindBy(xpath = "//span[text()='save changes']")
     WebElement save;
 
+    @FindBy(xpath ="//div[text()='Roof Shape']/../../../..//input" )
+    WebElement roofShapeSelect;
+
+    @FindBy(xpath = "//div[text()='Secondary Water Resistance']/../../../..//input")
+    WebElement secondaryWaterSelect;
+
+    @FindBy(xpath = "//div[text()='Opening Protection']/../../../..//input")
+    WebElement openProtectionSelect;
+
+    @FindBy(xpath = "//div[text()='Roof Deck']/../../../..//input")
+    WebElement roofDeckSelect;
+
+    @FindBy(xpath = "//div[text()='Distance to Shore']/../../../..//input")
+    WebElement distanceToShoreSelect;
+
+    @FindBy(xpath = "//div[text()='Roof Deck Attachment']/../../../..//input")
+    WebElement roofDeckAttachmentSelect;
+
+    @FindBy(xpath = "//div[text()='Roof Wall Connection']/../../../..//input")
+    WebElement roofWallConnectionSelect;
+
+
+
     public LocationCoverage(WebDriver driver) {
         super(driver);
         this.driver = driver;
@@ -161,6 +184,55 @@ public class LocationCoverage extends BasePage {
         enterRoofType(roofType);
         enterConstructionType(constructionType);
         anyLossesOnTheLastThreeYears(yesNo);
+        saveChanges();
+    }
+    public void roofShapeSelect(String value){
+        clickElement(roofShapeSelect,"Roof Shape Dropdown");
+        clickElement(driver.findElement(By.xpath("//li[text()='"+value+"']")), "Roof Shape");
+    }
+    public void secondaryWaterSelect(String value){
+        clickElement(secondaryWaterSelect,"Secondary Water Resistance Dropdown");
+        clickElement(driver.findElement(By.xpath("//li[text()='"+value+"']")), "Secondary Water Resistance");
+    }
+    public void openProtectionSelect(String value){
+        clickElement(openProtectionSelect,"Opening Protection Dropdown");
+        clickElement(driver.findElement(By.xpath("//li[text()='"+value+"']")), "Opening Protection");
+    }
+    public void roofDeckSelect(String value){
+        clickElement(roofDeckSelect,"Roof Deck");
+        clickElement(driver.findElement(By.xpath("//li[text()='"+value+"']")), "Roof Deck");
+    }
+    public void distanceToShoreSelect(String value){
+        clickElement(distanceToShoreSelect,"Distance to Shore");
+        clickElement(driver.findElement(By.xpath("//li[text()='"+value+"']")), "Distance to Shore");
+    }
+    public void roofDeckAttachmentSelect(String value){
+        clickElement(roofDeckAttachmentSelect,"Roof Deck Attachment");
+        clickElement(driver.findElement(By.xpath("//li[text()='"+value+"']")), "Roof Deck Attachment");
+    }
+    public void roofWallConnectionSelect(String value){
+        clickElement(roofWallConnectionSelect,"Roof Wall Connection");
+        clickElement(driver.findElement(By.xpath("//li[text()='"+value+"']")), "Roof Wall Connection");
+    }
+    public void fillInLocationCoverageRegression( String residenceType, String replacementCost, String coverageOptions, String allPerilsDed, String windstormOrHailDed, String liability, String medicalPayments, String yearBuilt, String roofType, String constructionType, String yesNo, String number,String roofShape,String secondaryWater, String openProtection, String roofDeck,String distanceToShore,String roofDeckAttachment,String roofWallConnection ){
+        clickLocationCoverage();
+        enterResidenceType(residenceType, number, coverageOptions);
+        enterReplacementCost(replacementCost);
+        enterAllPerilsDed(allPerilsDed);
+        enterWindstormOrHailDed(windstormOrHailDed);
+        enterLiability(liability);
+        enterMedicalPayments(medicalPayments);
+        enterYearBuilt(yearBuilt);
+        enterRoofType(roofType);
+        enterConstructionType(constructionType);
+        anyLossesOnTheLastThreeYears(yesNo);
+        roofShapeSelect(roofShape);
+        secondaryWaterSelect(secondaryWater);
+        openProtectionSelect(openProtection);
+        roofDeckSelect(roofDeck);
+        distanceToShoreSelect(distanceToShore);
+        roofDeckAttachmentSelect(roofDeckAttachment);
+        roofWallConnectionSelect(roofWallConnection);
         saveChanges();
     }
 

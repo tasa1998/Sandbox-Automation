@@ -9,7 +9,7 @@
 
     <test name="Sandbox">
         <classes>
-            <class name="runners.SmokeTestNgRunner"></class>
+            <class name="runners.RegressionTestNgRunner"></class>
         </classes>
     </test>
 

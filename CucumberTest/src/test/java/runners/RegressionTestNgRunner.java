@@ -10,9 +10,9 @@ import org.testng.annotations.Test;
 @CucumberOptions(
         features = {"src/test/java/features/Homeowner.feature","src/test/java/features/PersonalAuto.feature"},
         glue= "steps",
-        tags="@Homeowner"
+        tags="@Regression"
 )
-public class RegresionTestNgRunner extends AbstractTestNGCucumberTests {
+public class RegressionTestNgRunner extends AbstractTestNGCucumberTests {
 
     @Override
     @DataProvider(parallel = true)
