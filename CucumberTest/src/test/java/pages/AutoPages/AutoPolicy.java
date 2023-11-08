@@ -22,8 +22,6 @@ public class AutoPolicy extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-
-
     public void billingMethod(String method) {
         clickElement(billingMethodSelect, "Billing method dropdown");
         clickElement(driver.findElement(By.xpath("//li[text()='" + method + "']")), "Billing method");

@@ -10,6 +10,7 @@ import io.cucumber.java.en.Then;
 import org.openqa.selenium.By;
 import org.testng.Reporter;
 import pages.*;
+import pages.AutoPages.*;
 import pages.HomePages.EndOfQuoteCreation;
 import pages.HomePages.LocationCoverage;
 import pages.HomePages.PolicyInformation;
@@ -23,6 +24,7 @@ public class Steps extends BaseTest {
     Map<String, String> customerData = new HashMap<>();
     Map<String, String> homePageData = new HashMap<>();
     Map<String, String> homeOwnersData = new HashMap<>();
+    Map<String, String> personalAutoData = new HashMap<>();
 
     final String BROWSER = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("BROWSER");
     final String WAIT = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WAIT");
@@ -71,6 +73,13 @@ public class Steps extends BaseTest {
         homePageData = new GetExcelData().getRowData(arg0, "HomePage", Integer.parseInt(arg3));
     }
 
+    @Given("load data from Auto excel file {string}, {string},{string},{string}")
+    public void loadDataFromAutoExcelFile(String arg0, String arg1, String arg2, String arg3) throws IOException {
+        customerData = new GetExcelData().getRowData(arg0, "CustomerData", Integer.parseInt(arg2));
+        homePageData = new GetExcelData().getRowData(arg0, "HomePage", Integer.parseInt(arg3));
+        personalAutoData= new GetExcelData().getRowData(arg0, "PersonalAutoData", Integer.parseInt(arg1));
+    }
+
     @Then("user create new customer")
     public void userCreateNewCustomer() throws InterruptedException {
         new NewQuoteCreation(driver).enterCustomerInformation(customerData.get("FirstName"), customerData.get("LastName"), customerData.get("DOB"), customerData.get("Email"), customerData.get("Phone"), customerData.get("Address Line 1"), customerData.get("ZIP Code"));
@@ -101,6 +110,28 @@ public class Steps extends BaseTest {
 
     }
 
+    @And("user fill in policy information Personal Auto")
+    public void userFillInPolicyInformationPersonalAuto() {
+        new AutoPolicy(driver).fillInPolicyPage(personalAutoData.get("Billing Method"),personalAutoData.get("Has anyone knowingly provided material"),personalAutoData.get("Does any vehicle have any existing damage?"));
+    }
 
+    @And("user fill in driver page")
+    public void userFillInDriverPage() {
+        new AutoDriver(driver).fillInDriverPage(personalAutoData.get("Gender"),personalAutoData.get("Marital Status"),personalAutoData.get("License Status"), personalAutoData.get("Occupation"),personalAutoData.get("License Year"),personalAutoData.get("License Number"));
+    }
 
+    @And("user fill in vehicle page")
+    public void userFillInVehiclePage() {
+        new AutoVehicle(driver).fillInVehiclePage(personalAutoData.get("Year"),personalAutoData.get("Make"),personalAutoData.get("Model"),personalAutoData.get("Specification"),personalAutoData.get("Vehicle Use"));
+    }
+
+    @And("user fill in coverage page")
+    public void userFillInCoveragePage() {
+        new AutoCoverage(driver).fillInCoveragePage(personalAutoData.get("Policy Coverage Option"));
+    }
+
+    @And("user override underwriting referral")
+    public void userOverrideUnderwritingReferral() {
+        new AutoUnderwriting(driver).fillInUWQuestions(personalAutoData.get("Underwriter's Comments"),personalAutoData.get("Overridden"));
+    }
 }

@@ -14,6 +14,7 @@ public class AutoCoverage extends BasePage {
 
     @FindBy(xpath = "//span[text()='>>> rate quote']")
     WebElement rateBtn;
+
     WebDriver driver;
     public AutoCoverage(WebDriver driver) {
         super(driver);

@@ -5,8 +5,8 @@ Feature: Homeowners Example
     Given user open sandbox
 
   @Homeowner @Smoke
-  Scenario Outline: Smoke test example <Row Num Homeowners>
-  Smoke test example
+  Scenario Outline: Smoke test example Homeowners <Row Num Homeowners>
+  Smoke test example Homeowners
     Given load data from excel file "<File Name>", "<Row Num Homeowners>","<Row Num Customer>","<Row Num Home Page>"
     Then user logs in
     And user create new customer
