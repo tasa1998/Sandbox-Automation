@@ -28,7 +28,7 @@ public class AutoPolicy extends BasePage {
     }
 
     public void fillInPolicyPageCheckboxes(String providedMaterial, String existingDamage){
-        clickElement(driver.findElement(By.xpath("//div[text()='Has anyone knowingly provided material, false, or misleading information']/../../../..//label[text()='" + providedMaterial + "']")), "Provided Materia");
+        clickElement(driver.findElement(By.xpath("//div[text()='Has anyone knowingly provided material, false, or misleading information ']/../../../..//label[text()='" + providedMaterial + "']")), "Provided Materia");
         clickElement(driver.findElement(By.xpath("//div[text()='Does any vehicle have any existing damage? (excluding glass damage)']/../../../..//label[text()='" + existingDamage + "']")), "Existing Damage");
     }
 
@@ -39,5 +39,6 @@ public class AutoPolicy extends BasePage {
     public void fillInPolicyPage(String method,String providedMaterial, String existingDamage){
         billingMethod(method);
         fillInPolicyPageCheckboxes(providedMaterial,existingDamage);
+        clickNextBtn();
     }
 }
