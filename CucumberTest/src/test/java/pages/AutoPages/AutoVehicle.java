@@ -11,7 +11,7 @@ public class AutoVehicle extends BasePage {
 
     WebDriver driver;
 
-    @FindBy(xpath = "//input[@class='x-form-field x-form-text x-form-text-default ']")
+    @FindBy(xpath = "//div[text()='Year']/../../../..//input[@class='x-form-field x-form-text x-form-text-default ']")
     WebElement yearSelect;
 
     @FindBy(xpath = "//div[text()='Make']/../../../..//input[@class='x-form-field x-form-text x-form-text-default ']")
@@ -29,14 +29,25 @@ public class AutoVehicle extends BasePage {
     @FindBy(xpath = "//span[text()='next']")
     WebElement nextBtn;
 
+    @FindBy(xpath = "//span[text()='add vehicle']")
+    WebElement addVehicleBtn;
+
+    @FindBy(xpath = "//div[text()='Original Cost']/../../../..//input[@class='x-form-field x-form-text x-form-text-default ']")
+    WebElement originalCost;
+
+    @FindBy(xpath = "//div[text()='Stated Amount']/../../../..//input[@class='x-form-field x-form-text x-form-text-default ']")
+    WebElement statedAmount;
+
     public AutoVehicle(WebDriver driver) {
         super(driver);
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-    public void selectYear(String value) {
-        clickElement(yearSelect, "Gender dropdown");
-        clickElement(driver.findElement(By.xpath("//li[text()='" + value + "']")), "Gender");
+    public void selectYear(String value) throws InterruptedException {
+        Thread.sleep(3000);
+        clickElement(yearSelect, "Year dropdown");
+        Thread.sleep(3000);
+        clickElement(driver.findElement(By.xpath("//li[text()='" + value + "']")), "Year");
     }
     public void selectMake(String value) {
         clickElement(makeSelect, "Make dropdown");
@@ -59,7 +70,13 @@ public class AutoVehicle extends BasePage {
         clickElement(nextBtn, "next");
     }
 
-    public void fillInVehiclePage(String year, String make, String model, String specification, String vehicleUse){
+    public void addVehicle(String originalcost, String statedamount){
+        clickElement(addVehicleBtn, "Add Vehicle");
+        typeText(originalCost, originalcost, "Original Cost");
+        typeText(statedAmount, statedamount, "Stated Amount");
+    }
+
+    public void fillInVehiclePage(String year, String make, String model, String specification, String vehicleUse) throws InterruptedException {
         selectYear(year);
         selectMake(make);
         selectModel(model);
@@ -68,6 +85,18 @@ public class AutoVehicle extends BasePage {
         clickNextBtn();
     }
 
-
-
+    public void fillInVehiclePageRegression(String year, String make, String model, String specification, String vehicleUse, String originalcost, String statedamount) throws InterruptedException {
+        selectYear(year);
+        selectMake(make);
+        selectModel(model);
+        selectSpecification(specification);
+        selectVehicleUse(vehicleUse);
+        addVehicle(originalcost, statedamount);
+        selectYear(year);
+        selectMake(make);
+        selectModel(model);
+        selectSpecification(specification);
+        selectVehicleUse(vehicleUse);
+        clickNextBtn();
+    }
 }

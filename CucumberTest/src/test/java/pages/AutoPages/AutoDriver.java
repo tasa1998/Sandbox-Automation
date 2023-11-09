@@ -34,6 +34,12 @@ public class AutoDriver extends BasePage {
     @FindBy(xpath = "//span[text()='next']")
     WebElement nextBtn;
 
+    @FindBy(xpath = "//span[text()='Add']")
+    WebElement addIncident;
+
+    @FindBy(xpath = "//div[@class='x-form-trigger x-form-trigger-default x-form-date-trigger x-form-date-trigger-default  x-form-trigger-over']")
+    WebElement incidentDate;
+
     public AutoDriver(WebDriver driver) {
         super(driver);
         this.driver = driver;
@@ -48,6 +54,10 @@ public class AutoDriver extends BasePage {
     public void selectMaritalStatus(String value) {
         clickElement(maritalStatusSelect, "Marital Status dropdown");
         clickElement(driver.findElement(By.xpath("//li[text()='" + value + "']")), "Marital Status");
+    }
+
+    public void fillInCertificateCheckbox(String certificate){
+       clickElement(driver.findElement(By.xpath("//div[text()='SR-22/ Certificate of Insurance Required?']/../../../..//label[text()='" + certificate + "']")), "Certificate Required");
     }
 
     public void selectLicenseStatus(String value) {
@@ -66,17 +76,35 @@ public class AutoDriver extends BasePage {
         typeText(licenseNumberField,value,"License Number");
     }
 
+    public void enterIncident(String incidentdate){
+        clickElement(addIncident, "Add Incident");
+        typeText(incidentDate,incidentdate,"Set Incident Date");
+    }
+
     public void clickNextBtn() {
         clickElement(nextBtn, "next");
     }
 
-    public void fillInDriverPage(String gender, String maritalStatus, String licenseStatus, String occupation, String licenseYear, String licenseNumber){
+    public void fillInDriverPage(String gender, String maritalStatus, String certificate, String licenseStatus, String occupation, String licenseYear, String licenseNumber){
         selectGender(gender);
         selectMaritalStatus(maritalStatus);
+        fillInCertificateCheckbox(certificate);
         selectLicenseStatus(licenseStatus);
         selectOccupation(occupation);
         enterLicenseYear(licenseYear);
         enterLicenseNumber(licenseNumber);
+        clickNextBtn();
+    }
+
+    public void fillInDriverPageRegression(String gender, String maritalStatus, String certificate, String licenseStatus, String occupation, String licenseYear, String licenseNumber, String incidentdate){
+        selectGender(gender);
+        selectMaritalStatus(maritalStatus);
+        fillInCertificateCheckbox(certificate);
+        selectLicenseStatus(licenseStatus);
+        selectOccupation(occupation);
+        enterLicenseYear(licenseYear);
+        enterLicenseNumber(licenseNumber);
+        enterIncident(incidentdate);
         clickNextBtn();
     }
 }

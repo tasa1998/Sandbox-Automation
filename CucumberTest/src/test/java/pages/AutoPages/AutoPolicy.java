@@ -16,6 +16,8 @@ public class AutoPolicy extends BasePage {
 
     @FindBy(xpath = "//span[text()='next']")
     WebElement nextBtn;
+
+
     public AutoPolicy(WebDriver driver) {
         super(driver);
         this.driver = driver;
@@ -28,12 +30,12 @@ public class AutoPolicy extends BasePage {
     }
 
     public void fillInPolicyPageCheckboxes(String providedMaterial, String existingDamage){
-        clickElement(driver.findElement(By.xpath("//div[text()='Has anyone knowingly provided material, false, or misleading information ']/../../../..//label[text()='" + providedMaterial + "']")), "Provided Materia");
-        clickElement(driver.findElement(By.xpath("//div[text()='Does any vehicle have any existing damage? (excluding glass damage)']/../../../..//label[text()='" + existingDamage + "']")), "Existing Damage");
+        clickElement(driver.findElement(By.xpath("//div[text()='Has anyone knowingly provided material, false, or misleading information ']/../../../..//label[text()='" + providedMaterial + "']/../span/input")), "Provided Material");
+        clickElement(driver.findElement(By.xpath("//div[text()='Does any vehicle have any existing damage? (excluding glass damage)']/../../../..//label[text()='" + existingDamage + "']/../span/input")), "Existing Damage");
     }
 
     public void clickNextBtn(){
-        clickElement(nextBtn, "next");
+        clickElement(nextBtn, "Next");
     }
 
     public void fillInPolicyPage(String method,String providedMaterial, String existingDamage){
