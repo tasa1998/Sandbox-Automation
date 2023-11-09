@@ -46,7 +46,8 @@ public class Steps extends BaseTest {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
+        } else
+        basequit();
     }
 
 
@@ -111,7 +112,7 @@ public class Steps extends BaseTest {
     }
 
     @And("user fill in policy information Personal Auto")
-    public void userFillInPolicyInformationPersonalAuto() {
+    public void userFillInPolicyInformationPersonalAuto() throws InterruptedException {
         new AutoPolicy(driver).fillInPolicyPage(personalAutoData.get("Billing Method"),personalAutoData.get("Has anyone knowingly provided material"),personalAutoData.get("Does any vehicle have any existing damage?"));
     }
 
@@ -139,18 +140,16 @@ public class Steps extends BaseTest {
     public void userFillInWindMitigation() {
         new LocationCoverage(driver).fillInLocationCoverageRegression(homeOwnersData.get("Residence Type"), homeOwnersData.get("Replacement Cost"), homeOwnersData.get("Policy Coverage Option"), homeOwnersData.get("All Perils Deductible"), homeOwnersData.get("Windstorm or Hail Deductible"), homeOwnersData.get("Liability"), homeOwnersData.get("Medical Payments"), homeOwnersData.get("Year Built"), homeOwnersData.get("Roof Type"), homeOwnersData.get("Construction Type"), homeOwnersData.get("Any losses in the last three years?"), homeOwnersData.get("# of Floors"),homeOwnersData.get("Roof Shape"),homeOwnersData.get("Secondary Water Resistance"),homeOwnersData.get("Opening Protection"),homeOwnersData.get("Roof Deck"),homeOwnersData.get("Distance to Shore"),homeOwnersData.get("Roof Deck Attachment"),homeOwnersData.get("Roof Wall Connection"));
 
-
     }
 
     @And("user fill in driver page with incidents")
     public void userFillInDriverPageWithIncidents() {
         new AutoDriver(driver).fillInDriverPageRegression(personalAutoData.get("Gender"),personalAutoData.get("Marital Status"),personalAutoData.get("SR-22/ Certificate of Insurance Required?"), personalAutoData.get("License Status"), personalAutoData.get("Occupation"),personalAutoData.get("License Year"),personalAutoData.get("License Number"), personalAutoData.get("Incident Date"));
 
-
     }
 
     @And("user fill in vehicle page with extra vehicle")
     public void userFillInVehiclePageWithExtraVehicle() throws InterruptedException {
-        new AutoVehicle(driver).fillInVehiclePageRegression(personalAutoData.get("Year"),personalAutoData.get("Make"),personalAutoData.get("Model"),personalAutoData.get("Specification"),personalAutoData.get("Vehicle Use"), personalAutoData.get("Original Cost"), personalAutoData.get("Stated Amount"));
+        new AutoVehicle(driver).fillInVehiclePageRegression(personalAutoData.get("Year"),personalAutoData.get("Make"),personalAutoData.get("Model"),personalAutoData.get("Specification"),personalAutoData.get("Vehicle Use"), personalAutoData.get("Original Cost"), personalAutoData.get("Stated Amount"), personalAutoData.get("Make2"), personalAutoData.get("Model2"), personalAutoData.get("Specification2"), personalAutoData.get("Vehicle Use2"), personalAutoData.get("Vehicle Type"), personalAutoData.get("Ownership"), personalAutoData.get("Ownership2"));
     }
 }

@@ -11,20 +11,26 @@ public class AutoVehicle extends BasePage {
 
     WebDriver driver;
 
-    @FindBy(xpath = "//div[text()='Year']/../../../..//input[@class='x-form-field x-form-text x-form-text-default ']")
+    @FindBy(xpath = "//div[text()='Year']/../../../..//input[@value='- Select -']")
     WebElement yearSelect;
 
-    @FindBy(xpath = "//div[text()='Make']/../../../..//input[@class='x-form-field x-form-text x-form-text-default ']")
+    @FindBy(xpath = "//div[text()='Make']/../../../..//input[@value='- Select -']")
     WebElement makeSelect;
 
-    @FindBy(xpath = "//div[text()='Model']/../../../..//input[@class='x-form-field x-form-text x-form-text-default ']")
+    @FindBy(xpath = "//div[text()='Model']/../../../..//input[@value='- Select -']")
     WebElement modelSelect;
 
-    @FindBy(xpath = "//div[text()='Specification']/../../../..//input[@class='x-form-field x-form-text x-form-text-default ']")
+    @FindBy(xpath = "//div[text()='Specification']/../../../..//input[@value='- Select -']")
     WebElement specificationSelect;
 
-    @FindBy(xpath = "//input[@class='x-form-field x-form-text x-form-text-default ']")
+    @FindBy(xpath = "//div[text()='Vehicle Use']/../../../..//input[@value='- Select -']")
     WebElement vehicleUseSelect;
+
+    @FindBy(xpath = "//div[text()='Ownership']/../../../..//input[@value='- Select -']")
+    WebElement ownershipSelect;
+
+    @FindBy(xpath = "//div[text()='Vehicle Type']/../../../..//input")
+    WebElement vehicleTypeSelect;
 
     @FindBy(xpath = "//span[text()='next']")
     WebElement nextBtn;
@@ -44,9 +50,7 @@ public class AutoVehicle extends BasePage {
         PageFactory.initElements(driver, this);
     }
     public void selectYear(String value) throws InterruptedException {
-        Thread.sleep(3000);
         clickElement(yearSelect, "Year dropdown");
-        Thread.sleep(3000);
         clickElement(driver.findElement(By.xpath("//li[text()='" + value + "']")), "Year");
     }
     public void selectMake(String value) {
@@ -64,6 +68,16 @@ public class AutoVehicle extends BasePage {
     public void selectVehicleUse(String value) {
         clickElement(vehicleUseSelect, "VehicleUse dropdown");
         clickElement(driver.findElement(By.xpath("//li[text()='" + value + "']")), "VehicleUse");
+            }
+
+    public void selectOwnership(String ownership) {
+        clickElement(ownershipSelect, "Ownership dropdown");
+        clickElement(driver.findElement(By.xpath("//li[text()='" + ownership + "']")), "Ownership");
+    }
+
+    public void selectVehicleType(String type) {
+        clickElement(vehicleTypeSelect, "Vehicle Type dropdown");
+        clickElement(driver.findElement(By.xpath("//li[text()='" + type + "']")), "VehicleType");
     }
 
     public void clickNextBtn(){
@@ -74,7 +88,7 @@ public class AutoVehicle extends BasePage {
         clickElement(addVehicleBtn, "Add Vehicle");
         typeText(originalCost, originalcost, "Original Cost");
         typeText(statedAmount, statedamount, "Stated Amount");
-    }
+           }
 
     public void fillInVehiclePage(String year, String make, String model, String specification, String vehicleUse) throws InterruptedException {
         selectYear(year);
@@ -83,20 +97,24 @@ public class AutoVehicle extends BasePage {
         selectSpecification(specification);
         selectVehicleUse(vehicleUse);
         clickNextBtn();
+        clickNextBtn();
     }
 
-    public void fillInVehiclePageRegression(String year, String make, String model, String specification, String vehicleUse, String originalcost, String statedamount) throws InterruptedException {
+    public void fillInVehiclePageRegression(String year, String make, String model, String specification, String vehicleUse, String originalcost, String statedamount, String make2, String model2, String specification2, String vehicleUse2, String type, String ownership, String ownership2) throws InterruptedException {
         selectYear(year);
         selectMake(make);
         selectModel(model);
         selectSpecification(specification);
         selectVehicleUse(vehicleUse);
+        selectOwnership(ownership);
         addVehicle(originalcost, statedamount);
-        selectYear(year);
-        selectMake(make);
-        selectModel(model);
-        selectSpecification(specification);
-        selectVehicleUse(vehicleUse);
+        selectVehicleType(type);
+        selectMake(make2);
+        selectModel(model2);
+        selectSpecification(specification2);
+        selectVehicleUse(vehicleUse2);
+        selectOwnership(ownership2);
+        clickNextBtn();
         clickNextBtn();
     }
 }

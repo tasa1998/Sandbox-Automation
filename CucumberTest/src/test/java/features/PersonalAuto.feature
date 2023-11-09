@@ -1,5 +1,5 @@
-Feature: PersonalAuto Example
-  PersonalAuto Example
+Feature: PersonalAuto
+  Personal Auto
 
   Background:
     Given user open sandbox
@@ -8,15 +8,15 @@ Feature: PersonalAuto Example
   Scenario Outline: Smoke test example Personal Auto <Row Num Personal Auto>
   Smoke test example Personal Auto
     Given load data from Auto excel file "<File Name>", "<Row Num Personal Auto>","<Row Num Customer>","<Row Num Home Page>"
-    Then user logs in
-    And user create new customer
-    And user register quote
-    And user fill in policy information Personal Auto
-    And user fill in driver page
-    And user fill in vehicle page
-    And user fill in coverage page
-    And user override underwriting referral
-    And user binds quote
+    * user logs in
+    * user create new customer
+    * user register quote
+    * user fill in policy information Personal Auto
+    * user fill in driver page
+    * user fill in vehicle page
+    * user fill in coverage page
+    * user override underwriting referral
+    * user binds quote
 
 
     Examples:
@@ -34,15 +34,15 @@ Feature: PersonalAuto Example
   Scenario Outline: Smoke test example Personal Auto <Row Num Personal Auto>
   Smoke test example Personal Auto
     Given load data from Auto excel file "<File Name>", "<Row Num Personal Auto>","<Row Num Customer>","<Row Num Home Page>"
-    Then user logs in
-    And user create new customer
-    And user register quote
-    And user fill in policy information Personal Auto
-    And user fill in driver page with incidents
-    And user fill in vehicle page with extra vehicle
-    And user fill in coverage page
-    And user override underwriting referral
-    And user binds quote
+    * user logs in
+    * user create new customer
+    * user register quote
+    * user fill in policy information Personal Auto
+    * user fill in driver page with incidents
+    * user fill in vehicle page with extra vehicle
+    * user fill in coverage page
+    * user override underwriting referral
+    * user binds quote
 
 
     Examples:

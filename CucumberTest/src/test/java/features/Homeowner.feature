@@ -1,5 +1,5 @@
-Feature: Homeowners Example
-  Homeowners Example
+Feature: Homeowners
+  Homeowners
 
   Background:
     Given user open sandbox
@@ -8,12 +8,12 @@ Feature: Homeowners Example
   Scenario Outline: Smoke test example Homeowners <Row Num Homeowners>
   Smoke test example Homeowners
     Given load data from excel file "<File Name>", "<Row Num Homeowners>","<Row Num Customer>","<Row Num Home Page>"
-    Then user logs in
-    And user create new customer
-    And user register quote
-    And user fill in policy information
-    And user fill in location coverage
-    And user binds quote
+    * user logs in
+    * user create new customer
+    * user register quote
+    * user fill in policy information
+    * user fill in location coverage
+    * user binds quote
 
 
     Examples:
@@ -26,12 +26,12 @@ Feature: Homeowners Example
   Scenario Outline: Regression test example Homeowners <Row Num Homeowners>
   Regression test Example
     Given load data from excel file "<File Name>", "<Row Num Homeowners>","<Row Num Customer>","<Row Num Home Page>"
-    Then user logs in
-    And user create new customer
-    And user register quote
-    And user fill in policy information
-    And user fill in wind mitigation
-    And user binds quote
+    * user logs in
+    * user create new customer
+    * user register quote
+    * user fill in policy information
+    * user fill in wind mitigation
+    * user binds quote
 
 
     Examples:

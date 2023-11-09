@@ -37,7 +37,7 @@ public class AutoDriver extends BasePage {
     @FindBy(xpath = "//span[text()='Add']")
     WebElement addIncident;
 
-    @FindBy(xpath = "//div[@class='x-form-trigger x-form-trigger-default x-form-date-trigger x-form-date-trigger-default  x-form-trigger-over']")
+    @FindBy(xpath = "//input[@class='x-form-field x-form-text x-form-text-default ']")
     WebElement incidentDate;
 
     public AutoDriver(WebDriver driver) {
