@@ -13,7 +13,7 @@ import org.testng.Assert;
 import org.testng.Reporter;
 import pages.AutoPages.*;
 import pages.CommonUtility;
-import pages.CommonPages.LoginPage;
+import pages.CommonPages.Login;
 import pages.CommonPages.NewQuoteCreation;
 import pages.CommonPages.QuoteRegistration;
 import pages.HomePages.EndOfQuoteCreation;
@@ -69,7 +69,7 @@ public class Steps extends BaseSteps {
 
     @Then("user logs in")
     public void userLogsIn() {
-        new LoginPage(driver).login();
+        new Login(driver).login();
     }
 
     @Given("load data from excel file {string}, {string},{string},{string}")

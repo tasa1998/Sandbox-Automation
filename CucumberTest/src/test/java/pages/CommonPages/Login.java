@@ -8,9 +8,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import pages.BasePage;
 
-public class LoginPage extends BasePage {
+public class Login extends BasePage {
     WebDriver driver;
-    public LoginPage(WebDriver driver) {
+    public Login(WebDriver driver) {
         super(driver);
         this.driver = driver;
         PageFactory.initElements(driver, this);
