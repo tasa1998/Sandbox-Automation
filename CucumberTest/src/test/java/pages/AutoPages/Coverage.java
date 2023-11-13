@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pages.BasePage;
 
-public class AutoCoverage extends BasePage {
+public class Coverage extends BasePage {
 
     @FindBy(xpath = "//div[text()='Policy Coverage Option']/../../../..//input")
     WebElement policyCoverageOptionSelect;
@@ -16,7 +16,7 @@ public class AutoCoverage extends BasePage {
     WebElement rateBtn;
 
     WebDriver driver;
-    public AutoCoverage(WebDriver driver) {
+    public Coverage(WebDriver driver) {
         super(driver);
         this.driver = driver;
         PageFactory.initElements(driver, this);

@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pages.BasePage;
 
-public class AutoDriver extends BasePage {
+public class Driver extends BasePage {
     WebDriver driver;
 
     @FindBy(xpath = "//div[text()='Gender']/../../../..//input")
@@ -40,7 +40,7 @@ public class AutoDriver extends BasePage {
     @FindBy(xpath = "//input[@class='x-form-field x-form-text x-form-text-default ']")
     WebElement incidentDate;
 
-    public AutoDriver(WebDriver driver) {
+    public Driver(WebDriver driver) {
         super(driver);
         this.driver = driver;
         PageFactory.initElements(driver, this);

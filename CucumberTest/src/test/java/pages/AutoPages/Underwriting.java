@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pages.BasePage;
 
-public class AutoUnderwriting extends BasePage {
+public class Underwriting extends BasePage {
     WebDriver driver;
 
     @FindBy(xpath = "//table[@class='x-grid-item x-grid-item-selected']//tr//td[5]")
@@ -24,7 +24,7 @@ public class AutoUnderwriting extends BasePage {
 
     @FindBy(xpath = "//label[text()='Email']")
     WebElement emailCheckbox;
-    public AutoUnderwriting(WebDriver driver) {
+    public Underwriting(WebDriver driver) {
         super(driver);
         this.driver = driver;
         PageFactory.initElements(driver, this);

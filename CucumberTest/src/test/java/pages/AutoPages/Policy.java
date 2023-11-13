@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pages.BasePage;
 
-public class AutoPolicy extends BasePage {
+public class Policy extends BasePage {
 
     WebDriver driver;
 
@@ -18,7 +18,7 @@ public class AutoPolicy extends BasePage {
     WebElement nextBtn;
 
 
-    public AutoPolicy(WebDriver driver) {
+    public Policy(WebDriver driver) {
         super(driver);
         this.driver = driver;
         PageFactory.initElements(driver, this);

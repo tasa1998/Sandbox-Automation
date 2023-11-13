@@ -1,4 +1,4 @@
-package steps;
+package pages;
 
 import java.io.File;
 import java.io.IOException;

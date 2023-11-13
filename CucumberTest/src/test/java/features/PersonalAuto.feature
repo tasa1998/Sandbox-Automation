@@ -1,50 +1,55 @@
-Feature: PersonalAuto
-  Personal Auto
+Feature: Creation and issuance of Personal Auto policies
+  As a user, I should be able to issue Personal Auto policies for different vehicle types and with different test data.
 
   Background:
-    Given user open sandbox
+    Given the user opens the sandbox
 
   @PersonalAuto @Smoke
-  Scenario Outline: Smoke test example Personal Auto <Row Num Personal Auto>
-  Smoke test example Personal Auto
+  Scenario Outline: Smoke test Personal Auto - <Row Num Personal Auto>
+
+  This scenario tests the process of filling in all required fields to issue a Personal Auto insurance policy for different test data.
+
     Given load data from Auto excel file "<File Name>", "<Row Num Personal Auto>","<Row Num Customer>","<Row Num Home Page>"
-    * user logs in
-    * user create new customer
-    * user register quote
-    * user fill in policy information Personal Auto
-    * user fill in driver page
-    * user fill in vehicle page
-    * user fill in coverage page
-    * user override underwriting referral
-    * user binds quote
+    And  user logs in
+    And user create new customer
+    And user register quote
+    And user fill in policy information Personal Auto
+    And user fill in driver page
+    And user fill in vehicle page
+    And user fill in coverage page
+    And user override underwriting referral
+    When verify that the appropriate referral is displayed
+    Then user binds quote
 
 
     Examples:
       | File Name                      | Row Num Personal Auto | Row Num Customer | Row Num Home Page |
       | src/TestData/AutoTestData.xlsx | 0                     | 1                | 0                 |
       | src/TestData/AutoTestData.xlsx | 2                     | 2                | 0                 |
-      | src/TestData/AutoTestData.xlsx | 4                     | 3                | 14                |
       | src/TestData/AutoTestData.xlsx | 3                     | 4                | 0                 |
-      | src/TestData/AutoTestData.xlsx | 0                     | 5                | 15                |
       | src/TestData/AutoTestData.xlsx | 6                     | 6                | 0                 |
       | src/TestData/AutoTestData.xlsx | 7                     | 7                | 18                |
 
 
   @Regression
-  Scenario Outline: Smoke test example Personal Auto <Row Num Personal Auto>
-  Smoke test example Personal Auto
+  Scenario Outline: Smoke test Personal Auto <Row Num Personal Auto>
+
+  This scenario tests the process of filling in all required fields to issue a Personal Auto insurance policy for multiple types of vehicles and incidents.
+
     Given load data from Auto excel file "<File Name>", "<Row Num Personal Auto>","<Row Num Customer>","<Row Num Home Page>"
-    * user logs in
-    * user create new customer
-    * user register quote
-    * user fill in policy information Personal Auto
-    * user fill in driver page with incidents
-    * user fill in vehicle page with extra vehicle
-    * user fill in coverage page
-    * user override underwriting referral
-    * user binds quote
+    And user logs in
+    When user create new customer
+    And user register quote
+    And user fill in policy information Personal Auto
+    And user fill in driver page with incidents
+    And user fill in vehicle page with extra vehicle
+    And user fill in coverage page
+    And user override underwriting referral
+    When verify that the appropriate referral is displayed
+    Then user binds quote
 
 
     Examples:
       | File Name                      | Row Num Personal Auto | Row Num Customer | Row Num Home Page |
       | src/TestData/AutoTestData.xlsx | 0                     | 1                | 0                 |
+      | src/TestData/AutoTestData.xlsx | 1                     | 3                | 0                 |

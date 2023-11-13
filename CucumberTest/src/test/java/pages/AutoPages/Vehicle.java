@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pages.BasePage;
 
-public class AutoVehicle extends BasePage {
+public class Vehicle extends BasePage {
 
     WebDriver driver;
 
@@ -44,7 +44,7 @@ public class AutoVehicle extends BasePage {
     @FindBy(xpath = "//div[text()='Stated Amount']/../../../..//input[@class='x-form-field x-form-text x-form-text-default ']")
     WebElement statedAmount;
 
-    public AutoVehicle(WebDriver driver) {
+    public Vehicle(WebDriver driver) {
         super(driver);
         this.driver = driver;
         PageFactory.initElements(driver, this);

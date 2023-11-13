@@ -1,6 +1,5 @@
 package steps;
 
-import io.cucumber.java.Scenario;
 import io.qameta.allure.Allure;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -17,7 +16,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
 
-public class BaseTest {
+public class BaseSteps {
 
     WebDriver driver;
     DriverManager driverManager;

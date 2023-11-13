@@ -7,10 +7,14 @@ import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.testng.Reporter;
-import pages.*;
 import pages.AutoPages.*;
+import pages.CommonUtility;
+import pages.CommonPages.LoginPage;
+import pages.CommonPages.NewQuoteCreation;
+import pages.CommonPages.QuoteRegistration;
 import pages.HomePages.EndOfQuoteCreation;
 import pages.HomePages.LocationCoverage;
 import pages.HomePages.PolicyInformation;
@@ -19,7 +23,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Steps extends BaseTest {
+public class Steps extends BaseSteps {
 
     Map<String, String> customerData = new HashMap<>();
     Map<String, String> homePageData = new HashMap<>();
@@ -47,13 +51,13 @@ public class Steps extends BaseTest {
                 e.printStackTrace();
             }
         } else
-        basequit();
+         basequit();
     }
 
 
-    @Given("user open sandbox")
-    public void userOpenSandbox() {
-        driver.get("https://inforcedev.oneshield.com/oneshield/");
+
+    @Given("the user opens the sandbox")
+    public void theUserOpensTheSandbox() {driver.get("https://inforcedev.oneshield.com/oneshield/");
     }
 
     @And("user enters {string} in {string}")
@@ -113,27 +117,27 @@ public class Steps extends BaseTest {
 
     @And("user fill in policy information Personal Auto")
     public void userFillInPolicyInformationPersonalAuto() throws InterruptedException {
-        new AutoPolicy(driver).fillInPolicyPage(personalAutoData.get("Billing Method"),personalAutoData.get("Has anyone knowingly provided material"),personalAutoData.get("Does any vehicle have any existing damage?"));
+        new Policy(driver).fillInPolicyPage(personalAutoData.get("Billing Method"),personalAutoData.get("Has anyone knowingly provided material"),personalAutoData.get("Does any vehicle have any existing damage?"));
     }
 
     @And("user fill in driver page")
     public void userFillInDriverPage() {
-        new AutoDriver(driver).fillInDriverPage(personalAutoData.get("Gender"),personalAutoData.get("Marital Status"),personalAutoData.get("SR-22/ Certificate of Insurance Required?"), personalAutoData.get("License Status"), personalAutoData.get("Occupation"),personalAutoData.get("License Year"),personalAutoData.get("License Number"));
+        new Driver(driver).fillInDriverPage(personalAutoData.get("Gender"),personalAutoData.get("Marital Status"),personalAutoData.get("SR-22/ Certificate of Insurance Required?"), personalAutoData.get("License Status"), personalAutoData.get("Occupation"),personalAutoData.get("License Year"),personalAutoData.get("License Number"));
     }
 
     @And("user fill in vehicle page")
     public void userFillInVehiclePage() throws InterruptedException {
-        new AutoVehicle(driver).fillInVehiclePage(personalAutoData.get("Year"),personalAutoData.get("Make"),personalAutoData.get("Model"),personalAutoData.get("Specification"),personalAutoData.get("Vehicle Use"));
+        new Vehicle(driver).fillInVehiclePage(personalAutoData.get("Year"),personalAutoData.get("Make"),personalAutoData.get("Model"),personalAutoData.get("Specification"),personalAutoData.get("Vehicle Use"));
     }
 
     @And("user fill in coverage page")
     public void userFillInCoveragePage() {
-        new AutoCoverage(driver).fillInCoveragePage(personalAutoData.get("Policy Coverage Option"));
+        new Coverage(driver).fillInCoveragePage(personalAutoData.get("Policy Coverage Option"));
     }
 
     @And("user override underwriting referral")
     public void userOverrideUnderwritingReferral() {
-        new AutoUnderwriting(driver).fillInUWQuestions(personalAutoData.get("Underwriter's Comments"),personalAutoData.get("Overridden"));
+        new Underwriting(driver).fillInUWQuestions(personalAutoData.get("Underwriter's Comments"),personalAutoData.get("Overridden"));
     }
 
     @And("user fill in wind mitigation")
@@ -144,12 +148,21 @@ public class Steps extends BaseTest {
 
     @And("user fill in driver page with incidents")
     public void userFillInDriverPageWithIncidents() {
-        new AutoDriver(driver).fillInDriverPageRegression(personalAutoData.get("Gender"),personalAutoData.get("Marital Status"),personalAutoData.get("SR-22/ Certificate of Insurance Required?"), personalAutoData.get("License Status"), personalAutoData.get("Occupation"),personalAutoData.get("License Year"),personalAutoData.get("License Number"), personalAutoData.get("Incident Date"));
+        new Driver(driver).fillInDriverPageRegression(personalAutoData.get("Gender"),personalAutoData.get("Marital Status"),personalAutoData.get("SR-22/ Certificate of Insurance Required?"), personalAutoData.get("License Status"), personalAutoData.get("Occupation"),personalAutoData.get("License Year"),personalAutoData.get("License Number"), personalAutoData.get("Incident Date"));
 
     }
 
     @And("user fill in vehicle page with extra vehicle")
     public void userFillInVehiclePageWithExtraVehicle() throws InterruptedException {
-        new AutoVehicle(driver).fillInVehiclePageRegression(personalAutoData.get("Year"),personalAutoData.get("Make"),personalAutoData.get("Model"),personalAutoData.get("Specification"),personalAutoData.get("Vehicle Use"), personalAutoData.get("Original Cost"), personalAutoData.get("Stated Amount"), personalAutoData.get("Make2"), personalAutoData.get("Model2"), personalAutoData.get("Specification2"), personalAutoData.get("Vehicle Use2"), personalAutoData.get("Vehicle Type"), personalAutoData.get("Ownership"), personalAutoData.get("Ownership2"));
+        new Vehicle(driver).fillInVehiclePageRegression(personalAutoData.get("Year"),personalAutoData.get("Make"),personalAutoData.get("Model"),personalAutoData.get("Specification"),personalAutoData.get("Vehicle Use"), personalAutoData.get("Original Cost"), personalAutoData.get("Stated Amount"), personalAutoData.get("Make2"), personalAutoData.get("Model2"), personalAutoData.get("Specification2"), personalAutoData.get("Vehicle Use2"), personalAutoData.get("Vehicle Type"), personalAutoData.get("Ownership"), personalAutoData.get("Ownership2"));
+    }
+
+
+    @When("verify that the appropriate referral is displayed")
+    public void verifyThatTheAppropriateReferralIsDisplayed() {
+    }
+
+    @Then("verify that the policy has been issued")
+    public void verifyThatThePolicyHasBeenIssued() {
     }
 }
