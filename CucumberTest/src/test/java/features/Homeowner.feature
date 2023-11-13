@@ -35,6 +35,8 @@ Feature: Creation and issuance of Homeowners policies
     And user register quote
     And user fill in policy information
     And user fill in wind mitigation
+    Then verify that the appropriate referral is displayed
+    And user override underwriting referral
     When user binds quote
     Then verify that the policy has been issued
 

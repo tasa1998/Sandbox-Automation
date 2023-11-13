@@ -9,6 +9,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.Reporter;
 import pages.AutoPages.*;
 import pages.CommonUtility;
@@ -160,9 +161,15 @@ public class Steps extends BaseSteps {
 
     @When("verify that the appropriate referral is displayed")
     public void verifyThatTheAppropriateReferralIsDisplayed() {
+        if(homePageData.get("Program").equals("Homeowner"))
+            Assert.assertEquals(driver.findElement(By.xpath("//div[text()='Roof Wall Connection Type is Toe Nails and NOT located in zones 15,16,17,18,19']")).getText(), "Roof Wall Connection Type is Toe Nails and NOT located in zones 15,16,17,18,19");
+        else
+            Assert.assertEquals(driver.findElement(By.xpath("//div[text()='Roof Wall Connection Type is Toe Nails and NOT located in zones 15,16,17,18,19']")).getText(), "Roof Wall Connection Type is Toe Nails and NOT located in zones 15,16,17,18,19");
+
     }
 
     @Then("verify that the policy has been issued")
     public void verifyThatThePolicyHasBeenIssued() {
+        Assert.assertEquals(driver.findElement(By.xpath("//li[@class='mode3']/span")).getText(), "Quote is already Bound");
     }
 }

@@ -17,9 +17,9 @@ Feature: Creation and issuance of Personal Auto policies
     And user fill in driver page
     And user fill in vehicle page
     And user fill in coverage page
-    And user override underwriting referral
-    When verify that the appropriate referral is displayed
-    Then user binds quote
+#   Then verify that the appropriate referral is displayed
+    When user binds quote
+    Then verify that the policy has been issued
 
 
     Examples:
@@ -31,7 +31,7 @@ Feature: Creation and issuance of Personal Auto policies
       | src/TestData/AutoTestData.xlsx | 7                     | 7                | 18                |
 
 
-  @Regression
+  @PersonalAuto @Regression
   Scenario Outline: Smoke test Personal Auto <Row Num Personal Auto>
 
   This scenario tests the process of filling in all required fields to issue a Personal Auto insurance policy for multiple types of vehicles and incidents.
@@ -45,8 +45,9 @@ Feature: Creation and issuance of Personal Auto policies
     And user fill in vehicle page with extra vehicle
     And user fill in coverage page
     And user override underwriting referral
-    When verify that the appropriate referral is displayed
-    Then user binds quote
+#   Then verify that the appropriate referral is displayed
+    When user binds quote
+    Then verify that the policy has been issued
 
 
     Examples:
