@@ -170,6 +170,6 @@ public class Steps extends BaseSteps {
 
     @Then("verify that the policy has been issued")
     public void verifyThatThePolicyHasBeenIssued() {
-        Assert.assertEquals(driver.findElement(By.xpath("//li[@class='mode3']/span")).getText(), "Quote is already Bound");
+        Assert.assertEquals(driver.findElement(By.xpath("//li[@class='mode3']/span")).getText(), "Cannot bind this quote for this customer due to existing policy.");
     }
 }
