@@ -14,7 +14,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <aspectj.version>1.8.10</aspectj.version>
         <suiteFile>Regression.xml</suiteFile>
-        <suiteFile1>Smoke.xml</suiteFile1>
+        <suiteFile>Smoke.xml</suiteFile>
     </properties>
 
     <dependencies>
@@ -111,7 +111,7 @@
                 <configuration>
                     <suiteXmlFiles>
                         <suiteXmlFile>${suiteFile}</suiteXmlFile>
-                        <suiteXmlFile>${suiteFile1}</suiteXmlFile>
+                        <suiteXmlFile>${suiteFile}</suiteXmlFile>
                     </suiteXmlFiles>
 
                     <argLine>
