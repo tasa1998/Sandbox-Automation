@@ -125,7 +125,7 @@
                         <artifactId>aspectjweaver</artifactId>
                         <version>${aspectj.version}</version>
                     </dependency>
-                </dependencies>
+               </dependencies>
             </plugin>
         </plugins>
     </build>
